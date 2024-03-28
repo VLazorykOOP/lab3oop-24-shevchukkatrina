@@ -26,4 +26,18 @@ public:
             throw std::invalid_argument("Invalid triangle sides");
         }
     }
+    // Функція для перевірки чи можливо побудувати трикутник із заданими сторонами
+    static bool is_valid_triangle(double s1, double s2, double s3) {
+        return (s1 + s2 > s3) && (s1 + s3 > s2) && (s2 + s3 > s1);
+    }
+    // Функція для обчислення площі за формулою Герона
+    double calculate_area() const {
+        double s = (side1 + side2 + side3) / 2;
+        return sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+
+    // Функція для обчислення периметру
+    double calculate_perimeter() const {
+        return side1 + side2 + side3;
+    }
 
