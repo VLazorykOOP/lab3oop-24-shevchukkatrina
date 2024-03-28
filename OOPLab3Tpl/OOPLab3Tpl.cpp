@@ -75,6 +75,70 @@ public:
         std::cout << "Triangle with sides: " << side1 << ", " << side2 << ", " << side3 << " and color " << color << std::endl;
     }
 };
+
+//завдання 2.5
+class Vector {
+private:
+    long* data;
+    int size;
+    mutable int state; // Код стану: 0 - успішно, 1 - помилка недостатньо пам'яті, 2 - вихід за межі масиву
+
+public:
+    // Конструктори:
+    //конструктор без параметрів
+    Vector() : size(1), state(0) {
+        data = new long[size]();
+        if (!data)
+            state = 1;
+    }
+    //Конструктор з параметром розміру
+    Vector(int s) : size(s), state(0) {
+        data = new long[size]();
+        if (!data)
+            state = 1;
+    }
+    //Конструктор з двома параметрами
+    Vector(int s, long value) : size(s), state(0) {
+        data = new long[size];
+        if (!data) {
+            state = 1;
+            return;
+        }
+        for (int i = 0; i < size; ++i)
+            data[i] = value;
+    }
+
+    // Конструктор копіювання
+    Vector(const Vector& other) : size(other.size), state(other.state) {
+        data = new long[size];
+        if (!data) {
+            state = 1;
+            return;
+        }
+        for (int i = 0; i < size; ++i)
+            data[i] = other.data[i];
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int main() {
     //для першого завдання
     try {
