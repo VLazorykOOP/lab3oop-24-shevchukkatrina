@@ -75,4 +75,29 @@ public:
         std::cout << "Triangle with sides: " << side1 << ", " << side2 << ", " << side3 << " and color " << color << std::endl;
     }
 };
+int main() {
+    //для першого завдання
+    try {
+        // Створення об'єкту трикутника зі сторонами 3, 4, 5 та кольором червоний
+        Triangle triangle1(3, 5, 7, "yellow");
+        triangle1.print_triangle();
+        std::cout << "Area: " << triangle1.calculate_area() << std::endl;
+        std::cout << "Perimeter: " << triangle1.calculate_perimeter() << std::endl;
 
+        // Зміна сторін трикутника
+        triangle1.set_sides(10, 12, 15);
+        std::cout << "New sides: " << triangle1.get_side1() << ", " << triangle1.get_side2() << ", " << triangle1.get_side3() << std::endl;
+        std::cout << "Area: " << triangle1.calculate_area() << std::endl;
+        std::cout << "Perimeter: " << triangle1.calculate_perimeter() << std::endl;
+
+        // Зміна кольору трикутника
+        triangle1.set_color("blue");
+        std::cout << "New color: " << triangle1.get_color() << std::endl;
+
+        // Спроба створення недійсного трикутника (неправильні сторони)
+        Triangle invalid_triangle(1, 1, 4);
+        invalid_triangle.print_triangle();
+    }
+    catch (const std::invalid_argument& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
