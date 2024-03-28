@@ -221,8 +221,6 @@ int Vector::count = 0;
 
 
 
-
-
 int main() {
     //для першого завдання
     try {
@@ -249,3 +247,41 @@ int main() {
     catch (const std::invalid_argument& e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
+    //для 2 завдання
+    Vector::count++; // Збільшуємо лічильник при створенні нового об'єкту
+
+    Vector v1; // Конструктор без параметрів
+    v1.print(); // 0
+
+    Vector v2(5); // Конструктор з одним параметром
+    v2.print(); // 0 0 0 0 0
+
+    Vector v3(3, 10); // Конструктор з двома параметрами
+    v3.print(); // 10 10 10
+
+    Vector v4 = v3; // Конструктор копії
+    v4.print(); // 10 10 10
+
+    Vector v5;
+    // зміна значення елементу вектора v2 за допомогою setElement
+    v2.setElement(0, 5);
+    v5 = v2; // Оператор присвоєння
+    v5.print(); //  5 0 0 0 0
+    v2.setElement(2, 7); // Встановлення значення елементу
+    std::cout << "Element at index 2: " << v2.getElement(2) << std::endl; // 7
+
+    Vector v6 = v3 + v4; // Оператор додавання
+    v6.print(); // 20 20 20
+
+    Vector v7 = v6 * 2; // Оператор множення
+    v7.print(); // 40 40 40
+    std::cout << "Is v2 less than v3? " << (v2 < v3) << std::endl; // Очікую 1 
+    std::cout << "Are v2 and v4 not equal? " << (v2 != v4) << std::endl; // Очікую 1 
+    std::cout << "Are v3 and v4 equal? " << (v3 == v4) << std::endl; // Очікую 1 
+
+    std::cout << "State of v5: " << v5.getState() << std::endl; // Очікую 0 (немає помилки)
+
+    std::cout << "Number of objects of type Vector: " << Vector::count << std::endl;
+
+    return 0;
+}
