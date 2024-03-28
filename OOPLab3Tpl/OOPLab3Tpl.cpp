@@ -70,4 +70,9 @@ public:
     std::string get_color() const {
         return color;
     }
+    // Функція для друку трикутника
+    void print_triangle() const {
+        std::cout << "Triangle with sides: " << side1 << ", " << side2 << ", " << side3 << " and color " << color << std::endl;
+    }
+};
 
