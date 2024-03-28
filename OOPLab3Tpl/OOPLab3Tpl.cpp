@@ -118,26 +118,26 @@ public:
         for (int i = 0; i < size; ++i)
             data[i] = other.data[i];
     }
+    // Оператор присвоєння
+    Vector& operator=(const Vector& other) {
+        if (this == &other)
+            return *this;
 
+        delete[] data;
 
+        size = other.size;
+        state = other.state;
 
+        data = new long[size];
+        if (!data) {
+            state = 1;
+            return *this;
+        }
+        for (int i = 0; i < size; ++i)
+            data[i] = other.data[i];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        return *this;
+    }
 
 int main() {
     //для першого завдання
