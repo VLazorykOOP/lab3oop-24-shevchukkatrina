@@ -40,4 +40,34 @@ public:
     double calculate_perimeter() const {
         return side1 + side2 + side3;
     }
+    // Функції-члени для встановлення значень сторін та кольору
+    void set_sides(double s1, double s2, double s3) {
+        if (!is_valid_triangle(s1, s2, s3)) {
+            throw std::invalid_argument("Invalid triangle sides");
+        }
+        side1 = s1;
+        side2 = s2;
+        side3 = s3;
+    }
+
+    void set_color(const std::string& c) {
+        color = c;
+    }
+
+    // Функції-члени для отримання значень сторін та кольору
+    double get_side1() const {
+        return side1;
+    }
+
+    double get_side2() const {
+        return side2;
+    }
+
+    double get_side3() const {
+        return side3;
+    }
+
+    std::string get_color() const {
+        return color;
+    }
 
