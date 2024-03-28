@@ -1,24 +1,29 @@
-﻿// OOPLab3Tpl.cpp : Цей файл містить є шаблоном для 
-// виконання лаб. роботи №3. 
-// Він містинь функцію "main" з якої починається та закінчується виконання програми.
-//
+﻿#include <iostream>
+#include <cmath>
+#include <stdexcept>
+#include<complex>
 
-#include <iostream>
+//завдання 1.5
+class Triangle {
+private:
+    double side1, side2, side3;
+    std::string color;
 
-// Ваші файли загловки 
-//
-#include "Lab3Example.h"
-int main()
-{
-    std::cout << " Lab #3  !\n";
-//  Код виконання завдань
-//  Головне меню завдань
-//  Функції та класи можуть знаходитись в інших файлах проекту
+public:
+    /*/ Конструктор з параметрами за замовчуванням для кольору
+     Triangle(double s1, double s2, double s3, std::string c = "white") : side1(s1), side2(s2), side3(s3), color(c) {
+         if (!is_valid_triangle(s1, s2, s3)) {
+             throw std::invalid_argument("Invalid triangle sides");
+         }
+     }
+     */
+     // Конструктор без параметрів
+    Triangle() : side1(0), side2(0), side3(0), color("white") {}
 
-    int conv = 1;
-    if (conv == 1) conv = mainExample1();
-    if (conv == 1) conv = mainExample3(); 
-    if (conv == 1) conv = mainExample4();
-
-}
+    // Конструктор з параметрами
+    Triangle(double s1, double s2, double s3, std::string c = "white") : side1(s1), side2(s2), side3(s3), color(c) {
+        if (!is_valid_triangle(s1, s2, s3)) {
+            throw std::invalid_argument("Invalid triangle sides");
+        }
+    }
 
