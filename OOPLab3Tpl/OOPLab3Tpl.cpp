@@ -138,6 +138,90 @@ public:
 
         return *this;
     }
+    // Деструктор
+    ~Vector() {
+        delete[] data;
+    }
+    // Функції доступу
+    void setElement(int index, long value = 0) {
+        if (index < 0 || index >= size) {
+            state = 2;
+            return;
+        }
+        data[index] = value;
+    }
+
+    long getElement(int index) const {
+        if (index < 0 || index >= size) {
+            state = 2;
+            return 0;
+        }
+        return data[index];
+    }
+    // Функції арифметичних операцій:
+    //функція додавання
+    Vector operator+(const Vector& other) const {
+        Vector result(size);
+        for (int i = 0; i < size; ++i)
+            result.data[i] = data[i] + other.data[i];
+        return result;
+    }
+    //функція віднімання
+    Vector operator-(const Vector& other) const {
+        Vector result(size);
+        for (int i = 0; i < size; ++i)
+            result.data[i] = data[i] - other.data[i];
+        return result;
+    }
+    //Множення вектора на скаляр
+    Vector operator*(unsigned int scalar) const {
+        Vector result(size);
+        for (int i = 0; i < size; ++i)
+            result.data[i] = data[i] * scalar;
+        return result;
+    }
+
+    // Функції порівняння
+    bool operator<(const Vector& other) const {
+        for (int i = 0; i < size; ++i) {
+            if (data[i] >= other.data[i])
+                return false;
+        }
+        return true;
+    }
+
+    bool operator!=(const Vector& other) const {
+        for (int i = 0; i < size; ++i) {
+            if (data[i] != other.data[i])
+                return true;
+        }
+        return false;
+    }
+
+    bool operator==(const Vector& other) const {
+        return !(*this != other);
+    }
+
+    // Функція друку
+    void print() const {
+        for (int i = 0; i < size; ++i)
+            std::cout << data[i] << " ";
+        std::cout << std::endl;
+    }
+    // Функція, що повертає код стану
+    int getState() const {
+        return state;
+    }
+
+    // Статична функція для підрахунку кількості об'єктів даного типу
+    static int count;
+};
+int Vector::count = 0;
+
+
+
+
+
 
 int main() {
     //для першого завдання
